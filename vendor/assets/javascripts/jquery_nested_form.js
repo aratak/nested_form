@@ -46,7 +46,7 @@
       // Make a unique ID for the new child
       var regexp  = new RegExp('new_' + assoc, 'g');
       var new_id  = this.newId();
-      content     = $.trim(content.replace(regexp, new_id));
+      content     = this.replacer($.trim(content.replace(regexp, new_id)));
 
       var field = this.insertFields(content, assoc, link);
       // bubble up event upto document (through form)
@@ -57,6 +57,9 @@
     },
     newId: function() {
       return new Date().getTime();
+    },
+    replacer: function (c) {
+      // method to replace content dynamically
     },
     insertFields: function(content, assoc, link) {
       var target = $(link).data('target');
